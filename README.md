@@ -3,7 +3,7 @@ Is a lightweight vanilla js plugin without dependencies to validate web forms.
 
 ## Usage instructions
 
-### Install
+### Install
 
 ```html
 <!-- Put these into the <head> -->
@@ -11,7 +11,7 @@ Is a lightweight vanilla js plugin without dependencies to validate web forms.
 <script src="dist/validator.js">
 ```
 
-### Usage
+### Usage
 Ways to create validator instance.
 
 ```js
