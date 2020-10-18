@@ -1,13 +1,13 @@
 # Validator
 It is a lightweight vanilla js plugin without dependencies to validate web forms by data HTML attributes.
 
-__Features values validation via `regex`__
+__Features values validation via__ `Regex`
 
 - Email
 - Empty
 - Spaces
 - Phone number
-- Fileze size (empty)
+- File size (empty)
 - Phone length (ten digits)
 - File format (jpg, jpeg, png, pdf)
 
@@ -103,7 +103,7 @@ if (contact !== null) {
       buttonText: 'I understand',
       headerText: 'Error'
     },
-    buttonClass: ['btn', 'btn-info', 'f-comic', 'btn-sm'],
+    buttonClass: ['btn', 'btn-info', 'btn-sm'],
     headerClass: 'colorful',
     responseTo: {
       method: myFunction
@@ -124,7 +124,7 @@ if (contact !== null) {
       buttonText: 'I understand',
       headerText: 'Error'
     },
-    buttonClass: ['btn', 'btn-info', 'f-comic', 'btn-sm'],
+    buttonClass: ['btn', 'btn-info', 'btn-sm'],
     headerClass: 'colorful',
     responseTo: {
         method: myFunction,
@@ -139,3 +139,8 @@ function myFunction (msg) {
 }
 
 ```
+
+---
+
+# License
+The code is available under the [Mit License](https://github.com/leinadcoder/validator/blob/master/LICENSE)
