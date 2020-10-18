@@ -55,6 +55,8 @@ function Validator (element, config) {
   function validate (e) {
     e.preventDefault()
 
+    let valid = true
+
     for (let i = 0, l = self.dataValidator.length; i < l; i++) {
       const objValid = self.dataValidator[i]
 
@@ -70,6 +72,8 @@ function Validator (element, config) {
         }
 
         if (!self.config.regex[objValid.option].test(objValid.element.value)) {
+          valid = false
+
           if (self.config.responseTo.sendMsg === true) {
             if (self.config.responseTo.method instanceof Function) {
               self.config.responseTo.method({
@@ -95,13 +99,15 @@ function Validator (element, config) {
       }
     }
 
-    if (self.config.responseTo.method instanceof Function) {
-      self.config.responseTo.method({
-        response: true,
-        msg: 'All right!'
-      })
-    } else {
-      console.error('Method is not a function')
+    if (valid) {
+      if (self.config.responseTo.method instanceof Function) {
+        self.config.responseTo.method({
+          response: true,
+          msg: 'All right!'
+        })
+      } else {
+        console.error('Method is not a function')
+      }
     }
   }
 
