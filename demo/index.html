@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo form</title>
+    <link rel="stylesheet" href="../dist/validator.css">
+    <script src="../dist/validator.js"></script>
+</head>
+<body>
+    <form class="contact-form">
+        <input type="text" data-validator="empty" data-validator-msg="Field is required!">
+        <!-- Multiple type to validate -->
+        <input type="text" data-validator="empty^email" data-validator-msg="Field is required!^Invalid email">
+        <button data-trigger="validator">Send</button>
+    </form>
+    <script>
+        var contact = document.querySelector('.contact-form')
+        if (contact !== null) {
+            contact.validator({
+                modal: {
+                    buttonText: 'I understand',
+                    headerText: 'Error'
+                },
+                buttonClass: ['btn', 'btn-info', 'f-comic', 'btn-sm'],
+                headerClass: 'colorful',
+                responseTo: {
+                    method: myFunction,
+                    sendMsg: false
+                }
+            })
+        }
+
+        function myFunction () {
+            alert('Do something...')
+        }
+    </script>
+</body>
+</html>
