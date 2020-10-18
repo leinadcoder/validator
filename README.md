@@ -72,7 +72,7 @@ $('.selector').validator({})
     <input type="text" data-validator="empty" data-validator-msg="Field is required!">
     <!-- Multiple type to validate -->
     <input type="text" data-validator="empty^email" data-validator-msg="Field is required!^Invalid email">
-    <button data-trigger="valitador">Send<button>
+    <button data-trigger="validator">Send</button>
 </form>
 ```
 
