@@ -54,25 +54,50 @@
         </div>
     </div>
     <script>
-        var contact = document.querySelector('.contact-form')
-        if (contact !== null) {
-            contact.validator({
-                modal: {
-                    buttonText: 'I understand',
-                    headerText: 'Error'
-                },
-                buttonClass: ['btn', 'btn-info', 'f-comic', 'btn-sm'],
-                headerClass: 'colorful',
-                responseTo: {
-                    method: myFunction,
-                    sendMsg: false
-                }
-            })
-        }
+        var vDefault = document.querySelector('.v-default')
+        var vExtend = document.querySelector('.v-extend')
+        var vExtendModal = document.querySelector('.v-xtend-modal')
+
+
+        vDefault.validator()
+        vExtend.validator({
+            modal: {
+                buttonText: 'I understand',
+                headerText: 'Error'
+            },
+            buttonClass: ['btn-info'],
+            headerClass: 'colorful',
+            responseTo: {
+                method: myFunction,
+                sendMsg: false
+            }
+        })
+
+        vExtendModal.validator({
+            modal: {
+                buttonText: 'I understand',
+                headerText: 'Error'
+            },
+            buttonClass: ['btn-info'],
+            headerClass: 'colorful',
+            responseTo: {
+                method: responseFunction,
+                sendMsg: true
+            }
+        })
 
         function myFunction () {
-            alert('Do something...')
+            console.log('Do something...')
         }
+
+        function responseFunction (response) {
+            if (!response.response) {
+                alert(response.msg)
+            } else {
+                console.log('Do something...')
+            }
+        }
+
     </script>
 </body>
 </html>
