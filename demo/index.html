@@ -11,12 +11,48 @@
     </style>
 </head>
 <body>
-    <form class="contact-form">
-        <input type="text" data-validator="empty" data-validator-msg="Field is required!">
-        <!-- Multiple type to validate -->
-        <input type="text" data-validator="empty^email" data-validator-msg="Field is required!^Invalid email">
-        <button data-trigger="validator">Send</button>
-    </form>
+    <div class="container">
+        <h1>Validator JS demo</h1>
+        <article>
+            <b>Demo 1: No extends validator</b>
+        </article>
+        <div class="demo d-1">
+            <form class="v-default">
+                <label for="name">Name</label>
+                <input type="text" data-validator="empty" data-validator-msg="Field is required!">
+                <!-- Multiple type to validate -->
+                <label for="name">Email</label>
+                <input type="text" data-validator="empty^email" data-validator-msg="Field is required!^Invalid email">
+                <button class="btn" data-trigger="validator">Send</button>
+            </form>
+        </div>
+        <article>
+            <b>Demo 2: Extends validator callback function</b>
+        </article>
+        <div class="demo d-2">
+            <form class="v-extend">
+                <label for="name">Name</label>
+                <input type="text" data-validator="empty" data-validator-msg="Field is required!">
+                <!-- Multiple type to validate -->
+                <label for="name">Phone</label>
+                <input type="text" data-validator="empty^phone" data-validator-msg="Field is required!^Invalid phone number">
+                <button class="btn" data-trigger="validator">Send</button>
+            </form>
+        </div>
+        <article>
+            <b>Demo 2: Extends validator callback function send message error</b>
+        </article>
+        <div class="demo d-3">
+            <form class="v-extend-modal">
+                <label for="name">Name</label>
+                <input type="text" data-validator="empty" data-validator-msg="Field is required!">
+                <!-- Multiple type to validate -->
+                <label for="name">Reference code</label>
+                <input type="text" data-validator="empty^space" data-validator-msg="Field is required!^Reference code can't have spaces">
+                <button class="btn" data-trigger="validator">Send</button>
+            </form>
+        </div>
+    </div>
     <script>
         var contact = document.querySelector('.contact-form')
         if (contact !== null) {
