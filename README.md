@@ -90,7 +90,16 @@ Use configuration object to extend validator functionality
 | modal  | object | buttonText, headerText | `Ok`, `Notice` | Texts for button and header modal |
 | buttonClass | string, [string, string] | | empty | To set custom class to override the default |
 | headerClass | string, [string, string] | | empty | To set custom class to override the default |
-| responseTo | object | method, sendMsg | empty, false | Method to callback, For send alert message on method callback |
+| responseTo | object | method, sendMsg | empty, false | Callback function to get back control after validations |
+
+**Notice:** `responseTo` send object to callback function
+
+```json
+{
+    response: true|false
+    msg: 'All right!'| validator message
+}
+ ```
 
 ##### Extend example
 
@@ -134,10 +143,9 @@ if (contact !== null) {
 }
 
 // Function after validation
-function myFunction (msg) {
-    alert(msg)
+function myFunction (response) {
+    alert(response.msg)
 }
-
 ```
 
 ---
