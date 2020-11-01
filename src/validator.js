@@ -228,7 +228,7 @@ Validator.defaultConfig = {
     phone: /^(\d)(?!\1+$)\d*$/,
     fileFormat: /\.(jpg|jpeg|png|pdf)$/i,
     fileSize: /([^\s])/,
-    mail: /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
+    email: /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
   },
   modal: {
     buttonText: 'Ok',
