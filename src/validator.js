@@ -108,53 +108,71 @@ function Validator (element, config) {
   }
 
   function modal () {
-    const modal = document.createDocumentFragment()
+    if (!document.querySelector('.validator-modal-overlay')) {
+      const modal = document.createDocumentFragment()
 
-    var modalButton = createElement('button', 'v-button')
-    var modalWrap = createElement('div', 'validator-modal-wrap')
-    var modalHeader = createElement('div', 'validator-modal-header')
-    var modalFooter = createElement('div', 'validator-modal-footer')
-    var modalContent = createElement('div', 'validator-modal-content')
-    var modalOverlay = createElement('div', 'validator-modal-overlay')
+      var modalButton = createElement('button', 'v-button')
+      var modalWrap = createElement('div', 'validator-modal-wrap')
+      var modalHeader = createElement('div', 'validator-modal-header')
+      var modalFooter = createElement('div', 'validator-modal-footer')
+      var modalContent = createElement('div', 'validator-modal-content')
+      var modalOverlay = createElement('div', 'validator-modal-overlay')
 
-    modalButton.innerText = self.config.modal.buttonText
+      modalFooter.appendChild(modalButton)
 
-    if (Array.isArray(self.config.buttonClass)) {
-      self.config.buttonClass.forEach(c => {
-        modalButton.classList.add(c)
-      })
-    } else if (self.config.buttonClass !== '') {
-      modalButton.classList.add(self.config.buttonClass)
-    } else {
-      modalButton.classList.add('validator-modal-button')
+      modalHeader.appendChild(createElement('h5'))
+
+      modalWrap.appendChild(modalHeader)
+      modalWrap.appendChild(modalContent)
+      modalWrap.appendChild(modalFooter)
+
+      modalOverlay.appendChild(modalWrap)
+
+      modal.appendChild(modalOverlay)
+      document.body.appendChild(modal)
+
+      const closeModal = document.querySelector('.v-button')
+      closeModal.addEventListener(clickEvent, toogleModal)
     }
-
-    modalFooter.appendChild(modalButton)
-
-    modalHeader.appendChild(createElement('h5'))
-    modalHeader.querySelector('h5').innerText = self.config.modal.headerText
-
-    if (Array.isArray(self.config.HeaderClass)) {
-      self.config.buttonClass.forEach(c => {
-        modalHeader.querySelector('h5').add(c)
-      })
-    } else if (self.config.buttonClass !== '') {
-      modalHeader.querySelector('h5').classList.add(self.config.headerClass)
-    }
-
-    modalWrap.appendChild(modalHeader)
-    modalWrap.appendChild(modalContent)
-    modalWrap.appendChild(modalFooter)
-
-    modalOverlay.appendChild(modalWrap)
-
-    modal.appendChild(modalOverlay)
-    document.body.appendChild(modal)
   }
 
   function toogleModal () {
     const validatorModal = document.querySelector('.validator-modal-overlay')
 
+    if (!validatorModal.classList.contains('validator-show')) {
+      // Add custom options
+      const btn = document.querySelector('.v-button')
+      const title = document.querySelector('.validator-modal-header h5')
+
+      for (let i = btn.classList.length; i > 0; i--) {
+        btn.classList.remove(btn.classList[i])
+      }
+
+      title.classList = []
+
+      title.innerText = self.config.modal.headerText
+      btn.innerText = self.config.modal.buttonText
+
+      if (Array.isArray(self.config.headerClass)) {
+        self.config.headerClass.forEach(c => {
+          title.classList.add(c)
+        })
+      } else if (self.config.headerClass !== '') {
+        title.classList.add(self.config.headerClass)
+      }
+
+      if (Array.isArray(self.config.buttonClass)) {
+        self.config.buttonClass.forEach(c => {
+          btn.classList.add(c)
+        })
+      } else if (self.config.buttonClass !== '') {
+        btn.classList.add(self.config.buttonClass)
+      } else {
+        btn.classList.add('validator-modal-button')
+      }
+    }
+
+    // Show/Hide modal
     validatorModal.classList.toggle('validator-show')
   }
 
