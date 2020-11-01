@@ -1,5 +1,8 @@
 function Validator (element, config) {
   var self = this
+  const clickEvent = typeof window.ontouchstart !== 'undefined'
+    ? 'touchstart'
+    : 'click'
 
   function init () {
     if (element._validator) {
@@ -20,15 +23,8 @@ function Validator (element, config) {
   }
 
   function bind () {
-    const clickEvent = typeof window.ontouchstart !== 'undefined'
-      ? 'touchstart'
-      : 'click'
-
     const element = self.element.querySelector('[data-trigger="validator"]')
     element.addEventListener(clickEvent, validate)
-
-    const closeModal = document.querySelector('.v-button')
-    closeModal.addEventListener(clickEvent, toogleModal)
   }
 
   function getData () {
