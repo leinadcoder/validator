@@ -96,10 +96,15 @@ Use configuration object to extend validator functionality
 
 ```json
 {
-    response: true|false
-    msg: 'All right!'| validator message
+    "response": true,
+    "message": "All right!"
 }
  ```
+| Option    | Type   | Values  |
+| ------    | ------ | ------- |
+| response  | boolean | true, false | 
+| message   | string| 'All right!' |
+
 
 ##### Extend example
 
